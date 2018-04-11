@@ -1,6 +1,6 @@
-# docker-sensu-server
+# Docker-Compose-Sensu
 
-Sensu server and other things on Ubuntu in Docker.
+Sensu server and other things on OracleLinux:6.9 in Docker.
 
 Docker compose will bring up 3 containers:
 
@@ -8,36 +8,37 @@ Docker compose will bring up 3 containers:
 
 2. **redis**: This is used as a data store for things such as client registry and check results.
 
-3. **sensu**: This container will contain processes related to sensu (uchiwa, sensu-api, sensu-server).
+3. **sensu**: This container will contain processes related to sensu (uchiwa, sensu-api, sensu-server, sensu-client).
 
 ## Installation
 
 ```
-git clone git@github.com:noqcks/docker-sensu-server.git
+git clone git@github.com:venoodkhatuva12/Docker-Compose-Sensu.git
 ```
 
-## Run
+## How To Run
 
 ```
-cd docker-sensu-server
+cd Docker-Compose-Sensu
 docker-compose up -d
+docker-compose up --build 
 ```
 
-## Access
+## URL Access
 
-### uchiwa
+### URL uchiwa
 
-* `http://your-server:3000/`
+* `http://ServerIP:3000/`
 
-The default user/pass are admin:changeme. It is _highly recommended_ that you change this password in `files/uchiwa.json`
+The default user/pass are admin:admin123. It is _highly recommended_ that you change this password in `files/uchiwa.json`
 
-### sensu API
+### URL sensu API
 
-* `http://your-server:4567/`
+* `http://serverIP:4567/`
 
-The default user/pass are admin:badpass. It is _highly recommended_ that you change this password in `files/uchiwa.json` and `files/config.json`
+The default user/pass are admin:admin123. It is _highly recommended_ that you change this password in `files/uchiwa.json` and `files/config.json`
 
 
 ## License
 
-MIT
+FOSS (Free Operating System and Software)
