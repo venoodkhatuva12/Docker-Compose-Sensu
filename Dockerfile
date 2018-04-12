@@ -1,6 +1,6 @@
 FROM oraclelinux:6.9
 
-MAINTAINER Venood12 venood.khatuva12@gmail.com
+MAINTAINER Dixith apple@apple.com
 
 # Basic packages
 RUN yum update -y
@@ -17,16 +17,10 @@ RUN useradd sensu \
 # Sensu server
 ADD ./config-files/sensu.repo /etc/yum.repos.d/
 RUN yum install -y sensu
-ADD ./config-files/config.json /etc/sensu/conf.d/
-ADD ./config-files/client.json /etc/sensu/conf.d/
-ADD ./config-files/transport.json /etc/sensu/conf.d/
-RUN mkdir -p /etc/sensu/ssl \
-  && git clone git://github.com/joemiller/joemiller.me-intro-to-sensu.git \
-  && cd joemiller.me-intro-to-sensu/; ./ssl_certs.sh clean && ./ssl_certs.sh generate \
-  && cp /joemiller.me-intro-to-sensu/client_cert.pem /etc/sensu/ssl/cert.pem \
-  && cp /joemiller.me-intro-to-sensu/client_key.pem /etc/sensu/ssl/key.pem
+ADD ./config-files/config.json /etc/sensu/
+ADD ./config-files/client.json /etc/sensu/
+ADD ./config-files/transport.json /etc/sensu/
 
-# uchiwa
 RUN yum install -y uchiwa
 ADD ./config-files/uchiwa.json /etc/sensu/
 
@@ -36,6 +30,6 @@ RUN yum install -y python-setuptools --skip-broken \
 
 ADD ./config-files/supervisord.conf /etc/supervisord.conf
 
-EXPOSE 22 4567
+EXPOSE 4567
 
 CMD ["/usr/bin/supervisord"]

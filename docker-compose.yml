@@ -17,8 +17,8 @@ services:
     env_file:
       - config-files/rabbitmq.env
     ports:
-      - 5672:5672   
-      - 15672:15672 
+      - 5672:5672   # daemon API
+      - 15672:15672 # management API
     networks:
       - sensu_net
   sensu:
