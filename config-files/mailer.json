@@ -1,0 +1,9 @@
+{
+            "mailer": {
+            "mail_from": "alerts@sensu.apple.com",
+            "mail_to": "devops@apple.com",
+            "smtp_address": "localhost",
+            "smtp_port": "25",
+            "smtp_domain": "localhost"
+            }
+}
